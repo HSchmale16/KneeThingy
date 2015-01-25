@@ -1,4 +1,5 @@
-// this file contains everything needed to work with gnublin and this program
+// this file contains everything needed to work with gnublin and run this program
+// it has the function prototypes and the various constants defined in it
 #include "default.h"
 
 // Declare Variables
