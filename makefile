@@ -5,7 +5,7 @@
 CXX=g++
 CFLAGS=-Wall -std=C++11
 LDFLAGS=
-SRC=main.cpp gnublin.cpp
+SRC=main.cpp gnublin.cpp implementation.cpp
 OBJ=$(SRC:.cpp=.o)
 EXE=KneeThing.out
 

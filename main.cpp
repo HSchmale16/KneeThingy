@@ -8,6 +8,16 @@ gnublin_i2c accel1;
 
 int main(int argc, char ** argv)
 {
-
-	return 0;
+	int rc = init(); // return code
+	if(rc != 0)
+	{
+		// Error Handing, init should return 0
+		return rc;
+	}
+	// begin event loop
+	while(rc == 0) // if rc != 0 something bad happened
+	{
+		rc = eventLoop();
+	}
+	return rc;
 }
