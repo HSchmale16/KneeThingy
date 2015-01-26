@@ -9,6 +9,13 @@
 // inits the program
 int init()
 {
+	// set the pin modes of the GPIOs
+	gpio.pinMode(PIN_BUZZER, OUTPUT);
+	gpio.pinMode(PIN_CALIB_BUTTON, INPUT);
+	gpio.pinMode(PIN_CALIB_LED, OUTPUT);
+	gpio.pinMode(PIN_CALIB_DONE_LED, OUTPUT);
+	gpio.pinMode(PIN_WARN_LED, OUTPUT);
+	gpio.pinMode(PIN_STOP_LED, OUTPUT);
 	return 0;
 }
 

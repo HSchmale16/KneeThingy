@@ -15,34 +15,39 @@
 
 /** \brief Buzzer GPIO
  * \note Locatation: P8_3
+ * \note State: OUTPUT
  */
 const int PIN_BUZZER = 38;
 
 /** \brief Calibrate button GPIO
  * \note Location: P8_4
+ * \note State: INPUT
  */
-const int PIN_CALIBRATE = 39;
+const int PIN_CALIB_BUTTON = 39;
 
 /** \brief Calibration LED GPIO
  * \note Location: P8_5
- *
- * The pin with the calibration LED.
- * This pin goes high when in calibration mode
+ * \note State: OUTPUT
  */
 const int PIN_CALIB_LED = 34;
 
-/** \brief The warning LED GPIO
+/** \brief Calibration Complete LED GPIO
  * \note Location: P8_6
- *
- * This gpio goes high when the warning state is
- * met.
+ * \note State: OUTPUT
  */
-const int PIN_WARN_LED = 35;
+const int PIN_DONE_CALIB_LED = 35;
+
+/** \brief The warning LED GPIO
+ * \note Location: P8_7
+ * \note State: OUTPUT
+ */
+const int PIN_WARN_LED = 66;
 
 /** \brief The stop light
- * \note Location: P8_7
+ * \note Location: P8_8
+ * \note State: OUTPUT
  */
-const int PIN_STOP_LED = 66;
+const int PIN_STOP_LED = 67;
 
 // ========================================
 // ============ Global Externs ============
