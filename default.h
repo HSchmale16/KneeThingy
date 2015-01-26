@@ -14,7 +14,20 @@
 // =========== Global Constants ===========
 // ========================================
 
+// ------------- Std Constant -------------
+// Misc. Constants
+
+/** \brief database file path
+ */
+const std::string DB_FILE_PATH = "./kneething.db";
+
+/** \brief directory where logs are stored
+ */
+const std::string LOG_FILE_DIR = "./logs";
+
 // ------------- Pin Constant -------------
+// What pin is each thingy on.
+
 /** \brief Buzzer GPIO
  * \note Locatation: P8_3
  * \note State: OUTPUT
