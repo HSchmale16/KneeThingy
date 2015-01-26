@@ -16,6 +16,12 @@ int init()
 	gpio.pinMode(PIN_CALIB_DONE_LED, OUTPUT);
 	gpio.pinMode(PIN_WARN_LED, OUTPUT);
 	gpio.pinMode(PIN_STOP_LED, OUTPUT);
+	
+	// init i2c
+	accel0.setAddress(ACCEL0_I2C_ADDR);
+	accel0.setDevicefile(ACCEL0_DEV_FILE);
+	accel1.setAddress(ACCEL1_I2C_ADDR);
+	accel1.setDevicefile(ACCEL1_DEV_FILE);
 	return 0;
 }
 

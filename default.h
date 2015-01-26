@@ -71,10 +71,20 @@ const int PIN_STOP_LED = 67;
  */
 const int ACCEL0_I2C_ADDR = 0x26;
 
+/** \brief Device file of accel0 i2c bus
+ */
+const std::string ACCEL0_DEV_FILE = "/dev/i2c-0";
+
 /** \brief Address of Accel1 on I2C bus
  * \note this needs to be found from the spec sheet.
  */
 const int ACCEL1_I2C_ADDR = 0x26;
+
+
+/** \brief Device file of accel1 i2c bus
+ */
+const std::string ACCEL1_DEV_FILE = "/dev/i2c-1";
+
 
 // ========================================
 // ============= Structs Defs =============
@@ -89,8 +99,8 @@ struct Accelerometer
 	int m_initRot; //!< The init rotation of this. Set during calibration.
 };
 
-/** \brief A 3d Accelerometer struct. This is a wrapper around a regular\
- * accelerometer to allow for 3d usage.
+/** \brief A 3d Accelerometer struct. This is a wrapper around a regular
+ * accelerometer to allow for usage in 3 dimensions.
  */
 struct Accelerometer3d
 {
