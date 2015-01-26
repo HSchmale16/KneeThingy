@@ -37,7 +37,7 @@ const int PIN_CALIB_LED = 34;
  * \note Location: P8_6
  * \note State: OUTPUT
  */
-const int PIN_DONE_CALIB_LED = 35;
+const int PIN_CALIB_DONE_LED = 35;
 
 /** \brief The warning LED GPIO
  * \note Location: P8_7
@@ -64,21 +64,27 @@ const int ACCEL0_I2C_ADDR = 0x26;
 const int ACCEL1_I2C_ADDR = 0x26;
 
 // ========================================
-// ============ Global Externals ==========
+// ============= Structs Defs =============
 // ========================================
 
-/** \brief GPIO Object Global
+/** \brief An Accelerometer struct that holds the current state of a
+ * single accelerometer.
  */
-extern gnublin_gpio gpio;
+struct Accelerometer
+{
+	int m_rot;     //!< The Rotation of that accelerometer.
+	int m_initRot; //!< The init rotation of this. Set during calibration.
+};
 
-/** \brief accel0 - the accelerometer on the left leg
+/** \brief A 3d Accelerometer struct. This is a wrapper around a regular\
+ * accelerometer to allow for 3d usage.
  */
-extern gnublin_i2c accel0;
-
-/** \brief accel1 - the accelerometer on the right leg
- */
-extern gnublin_i2c accel1;
-
+struct Accelerometer3d
+{
+	Accelerometer m_xAcc; //!< x-axis Accelerometer
+	Accelerometer m_yAcc; //!< y-axis Accelerometer
+	Accelerometer m_zAcc; //!< z-axis Accelerometer
+};
 
 // ========================================
 // ========= Function Prototypes ==========
@@ -96,3 +102,19 @@ int init();
  * to return anything that is _NOT_ 0.
  */
 int eventLoop();
+
+// ========================================
+// ============ Global Externals ==========
+// ========================================
+
+/** \brief GPIO Object Global
+ */
+extern gnublin_gpio gpio;
+
+/** \brief accel0 - the accelerometer on the left leg
+ */
+extern gnublin_i2c accel0;
+
+/** \brief accel1 - the accelerometer on the right leg
+ */
+extern gnublin_i2c accel1;
