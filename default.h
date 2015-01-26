@@ -7,12 +7,14 @@
 #define BOARD BEAGLEBONE_BLACK
 #include "gnublin.h"
 
-#include <iostream>
+#include <iostream> // for basic I/O opps
+#include <string>   // for std::string
 
 // ========================================
 // =========== Global Constants ===========
 // ========================================
 
+// ------------- Pin Constant -------------
 /** \brief Buzzer GPIO
  * \note Locatation: P8_3
  * \note State: OUTPUT
@@ -49,8 +51,20 @@ const int PIN_WARN_LED = 66;
  */
 const int PIN_STOP_LED = 67;
 
+// ----------- i2c bus constant -----------
+
+/** \brief Address of Accel0 on I2C bus
+ * \note this needs to be found from the spec sheet.
+ */
+const int ACCEL0_I2C_ADDR = 0x26;
+
+/** \brief Address of Accel1 on I2C bus
+ * \note this needs to be found from the spec sheet.
+ */
+const int ACCEL1_I2C_ADDR = 0x26;
+
 // ========================================
-// ============ Global Externs ============
+// ============ Global Externals ==========
 // ========================================
 
 /** \brief GPIO Object Global
@@ -66,9 +80,9 @@ extern gnublin_i2c accel0;
 extern gnublin_i2c accel1;
 
 
-// =======================================
-// ========= Function Prototypes =========
-// =======================================
+// ========================================
+// ========= Function Prototypes ==========
+// ========================================
 
 /** \brief Initializes the system
  * \return 0 on success, anything else on fail

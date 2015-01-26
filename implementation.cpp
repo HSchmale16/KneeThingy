@@ -19,6 +19,8 @@ int init()
 	return 0;
 }
 
+// This function contains the commands that should be
+// carried out every iteration of the event loop
 int eventLoop()
 {
 	return 0;
