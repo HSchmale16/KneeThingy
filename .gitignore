@@ -1,3 +1,9 @@
+# git ignore for KneeThing Project
+
+# Generated Documentation files
+doxyfile
+doc/*
+
 # Build Files
 *.o
 *.out

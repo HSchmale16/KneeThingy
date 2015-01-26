@@ -1,3 +1,10 @@
+/** \author Henry J Schmale
+ * \date January 25, 2015
+ *
+ * \mainpage Knee Thing
+ * \section Potter's Group should write a description of program here.
+ */
+
 // this file contains everything needed to work with gnublin and run this program
 // it has the function prototypes and the various constants defined in it
 #include "default.h"

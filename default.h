@@ -72,7 +72,7 @@ const int ACCEL1_I2C_ADDR = 0x26;
  */
 struct Accelerometer
 {
-	int m_rot;     //!< The Rotation of that accelerometer.
+	int m_rot;     //!< The current rotation of that accelerometer.
 	int m_initRot; //!< The init rotation of this. Set during calibration.
 };
 
