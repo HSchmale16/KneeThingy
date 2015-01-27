@@ -5,6 +5,9 @@
  */
 
 #include "default.h"
+#include <sqlite3.h>
+
+static sqlite3 *db;
 
 // inits the program
 int init()
