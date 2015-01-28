@@ -7,3 +7,6 @@ doc/*
 # Build Files
 *.o
 *.out
+
+# Various other files
+*.db

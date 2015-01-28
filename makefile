@@ -6,7 +6,7 @@ CXX=g++
 CFLAGS=-Wall -std=C++11
 LDFLAGS=-lsqlite3
 SRC=main.cpp gnublin.cpp implementation.cpp \
-	sqlCallbacks.cpp
+	sqlCallbacks.cpp src/BMA180Accelerometer.cpp
 OBJ=$(SRC:.cpp=.o)
 EXE=KneeThing.out
 

@@ -7,8 +7,9 @@
 #define BOARD BEAGLEBONE_BLACK
 #include "gnublin.h"
 
-#include <iostream> // for basic I/O opps
-#include <string>   // for std::string
+#include <iostream>                        // for basic I/O opps
+#include <string>                          // for std::string
+#include "include/BMA180Accelerometer.h"
 
 // ========================================
 // =========== Global Constants ===========
@@ -123,21 +124,5 @@ int eventLoop();
 // ========================================
 // ============ Global Externals ==========
 // ========================================
-
-/** \brief GPIO Object Global
- */
-extern gnublin_gpio gpio;
-
-/** \brief accel0 - the accelerometer on the left leg
- */
-extern gnublin_i2c accel0;
-
-/** \brief accel1 - the accelerometer on the right leg
- */
-extern gnublin_i2c accel1;
-
-/** \brief gyro0 - the gyro scope on the left leg.
- */
-extern gnublin_i2c gyro0;
-
-extern gnublin_i2c gyro1;
+extern BMA180Accelerometer g_Accel0; // Accel on the left leg
+extern BMA180Accelerometer g_Accel1; // Accel on the right leg

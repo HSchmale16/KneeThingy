@@ -31,7 +31,7 @@
 #include <linux/i2c.h>
 #include <linux/i2c-dev.h>
 #include <sys/ioctl.h>
-#include <stropts.h>
+//#include <stropts.h>
 #include <stdio.h>
 #include "../include/BMA180Accelerometer.h"
 #include <iostream>
