@@ -8,6 +8,9 @@ project to use the api. Included files are `gnublin.cpp` and
 
 This project is meant to run on a beaglebone black.
 
+# Citations
+* https://github.com/derekmolloy/beaglebone
+
 # Dependicies #
 * gnublin-api
 * libsqlite3-dev  _stupid apt-get_
