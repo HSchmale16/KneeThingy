@@ -9,10 +9,8 @@
 
 // Externs declared in header are here
 gnublin_gpio gpio;
-gnublin_i2c accel0;
-gnublin_i2c accel1;
-gnublin_i2c gyro0;
-gnublin_i2c gyro1;
+BMA180Accelerometer * g_Accel0;
+BMA180Accelerometer * g_Accel1;
 
 // File scope global variables
 static sqlite3 *db;
@@ -20,10 +18,11 @@ static sqlite3 *db;
 // FWD Declarations of functions used in this file and declared later.
 
 
-
+#include <iostream>
 // inits the program
 int init()
 {
+	using namespace std;
 	// set the pin modes of the GPIOs
 	gpio.pinMode(PIN_BUZZER, OUTPUT);
 	gpio.pinMode(PIN_CALIB_BUTTON, INPUT);
@@ -33,8 +32,23 @@ int init()
 	gpio.pinMode(PIN_STOP_LED, OUTPUT);
 	
 	// Init I2C for all devices here
-	
-
+	/*
+	g_Accel0 = new BMA180Accelerometer(0, 0x50);	
+	// @todo init g_Accel1
+g_Accel0->setRange(PLUSMINUS_1_G);
+g_Accel0->setBandwidth(BW_150HZ);
+cout << "The current bandwidth is: " << (int)g_Accel0->getBandwidth() << endl;
+cout << "The current mode is: " << (int)g_Accel0->getModeConfig() << endl;
+cout << "The current range is: " << (int)g_Accel0->getRange() << endl;
+cout << "The current temperature is: " << (float)g_Accel0->getTemperature() << endl;
+*/
+BMA180Accelerometer accelerometer(3, 0x40);
+accelerometer.setRange(PLUSMINUS_1_G);
+accelerometer.setBandwidth(BW_150HZ);
+cout << "The current bandwidth is: " << (int)accelerometer.getBandwidth() << endl;
+cout << "The current mode is: " << (int)accelerometer.getModeConfig() << endl;
+cout << "The current range is: " << (int)accelerometer.getRange() << endl;
+cout << "The current temperature is: " << (float)accelerometer.getTemperature() << endl;
 	// init DB
 	int rc = sqlite3_open(DB_FILE_PATH.c_str(), &db);
 	if(rc){
@@ -50,6 +64,7 @@ int init()
 // function.
 int eventLoop()
 {
+	
 	return 0;
 }
 

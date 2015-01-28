@@ -67,18 +67,6 @@ const int PIN_STOP_LED = 67;
 
 // ----------- i2c bus constant -----------
 
-const std::string I2C_LEFT_FILE = "/"; // set me right
-
-const std::string I2C_RIGHT_FILE = "/"; // set me right too
-
-// Grab the i2c addys from the datasheet
-const int ACCEL0_ADDY = 0x27; 
-
-const int ACCEL1_ADDY = 0x29;
-
-const int GYRO0_ADDY = 0x54;
-
-const int GYRO1_ADDY = 0x34;
 
 
 // ========================================
@@ -124,5 +112,6 @@ int eventLoop();
 // ========================================
 // ============ Global Externals ==========
 // ========================================
-extern BMA180Accelerometer g_Accel0; // Accel on the left leg
-extern BMA180Accelerometer g_Accel1; // Accel on the right leg
+extern gnublin_gpio gpio;
+extern BMA180Accelerometer * g_Accel0; // Accel on the left leg
+extern BMA180Accelerometer * g_Accel1; // Accel on the right leg
