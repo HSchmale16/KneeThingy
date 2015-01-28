@@ -9,11 +9,6 @@
 // it has the function prototypes and the various constants defined in it
 #include "default.h"
 
-// Declare Variables
-gnublin_gpio gpio;
-gnublin_i2c accel0;
-gnublin_i2c accel1;
-
 int main(int argc, char ** argv)
 {
 	int rc = init(); // return code

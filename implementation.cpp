@@ -7,6 +7,12 @@
 #include "default.h"
 #include <sqlite3.h>
 
+// Externs declared in header are here
+gnublin_gpio gpio;
+gnublin_i2c accel0;
+gnublin_i2c accel1;
+
+
 // File scope global variables
 static sqlite3 *db;
 
@@ -25,11 +31,8 @@ int init()
 	gpio.pinMode(PIN_WARN_LED, OUTPUT);
 	gpio.pinMode(PIN_STOP_LED, OUTPUT);
 	
-	// init i2c
-	accel0.setAddress(ACCEL0_I2C_ADDR);
-	accel0.setDevicefile(ACCEL0_DEV_FILE);
-	accel1.setAddress(ACCEL1_I2C_ADDR);
-	accel1.setDevicefile(ACCEL1_DEV_FILE);
+	// Init I2C for all devices here
+	
 
 	// init DB
 	int rc = sqlite3_open(DB_FILE_PATH.c_str(), &db);
