@@ -66,24 +66,18 @@ const int PIN_STOP_LED = 67;
 
 // ----------- i2c bus constant -----------
 
-/** \brief Address of Accel0 on I2C bus
- * \note this needs to be found from the spec sheet.
- */
-const int ACCEL0_I2C_ADDR = 0x26;
+const std::string I2C_LEFT_FILE = "/"; // set me right
 
-/** \brief Device file of accel0 i2c bus
- */
-const std::string ACCEL0_DEV_FILE = "/dev/i2c-0";
+const std::string I2C_RIGHT_FILE = "/"; // set me right too
 
-/** \brief Address of Accel1 on I2C bus
- * \note this needs to be found from the spec sheet.
- */
-const int ACCEL1_I2C_ADDR = 0x26;
+// Grab the i2c addys from the datasheet
+const int ACCEL0_ADDY = 0x27; 
 
+const int ACCEL1_ADDY = 0x29;
 
-/** \brief Device file of accel1 i2c bus
- */
-const std::string ACCEL1_DEV_FILE = "/dev/i2c-1";
+const int GYRO0_ADDY = 0x54;
+
+const int GYRO1_ADDY = 0x34;
 
 
 // ========================================
@@ -141,3 +135,9 @@ extern gnublin_i2c accel0;
 /** \brief accel1 - the accelerometer on the right leg
  */
 extern gnublin_i2c accel1;
+
+/** \brief gyro0 - the gyro scope on the left leg.
+ */
+extern gnublin_i2c gyro0;
+
+extern gnublin_i2c gyro1;

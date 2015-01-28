@@ -11,7 +11,8 @@
 gnublin_gpio gpio;
 gnublin_i2c accel0;
 gnublin_i2c accel1;
-
+gnublin_i2c gyro0;
+gnublin_i2c gyro1;
 
 // File scope global variables
 static sqlite3 *db;
