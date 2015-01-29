@@ -33,7 +33,10 @@ int init()
 	gpio.pinMode(PIN_STOP_LED, OUTPUT);
 	
 	// Init I2C for all devices here
-	
+	g_Accel0 = new BMA180Accelerometer(1, 0x38);
+	g_Accel0->setRange(PLUSMINUS_1_G);
+	g_Accel0->setBandwidth(BW_150HZ);	
+
 	// init DB
 	int rc = sqlite3_open(DB_FILE_PATH.c_str(), &db);
 	if(rc){
@@ -49,7 +52,11 @@ int init()
 // function.
 int eventLoop()
 {
-	
+	g_Accel0->readFullSensorState();
+	float roll = g_Accel0->getPitch();
+	float pitch = g_Accel0->getRoll();
+	std::cout << "Roll: " << roll << "\tPitch: " << pitch << std::endl;	
+	usleep(50000);
 	return 0;
 }
 
