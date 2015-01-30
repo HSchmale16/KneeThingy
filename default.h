@@ -73,25 +73,24 @@ const int PIN_STOP_LED = 67;
 // ============= Structs Defs =============
 // ========================================
 
-/** \brief An Accelerometer struct that holds the current state of a
- * single accelerometer.
+/** \brief A struct to contain the status of an accelerometer 
+ * and the starting state of that accelerometer
  */
-struct Accelerometer
+struct Accel3d
 {
-	int m_rot;     //!< The current rotation of that accelerometer.
-	int m_initRot; //!< The init rotation of this. Set during calibration.
+	float m_fRoll;      //!< The roll of that accelerometer
+	float m_fPitch;     //!< The pitch of that accelerometer
+	float m_fInitRoll;   //!< The initial roll
+	float m_fInitPitch;  //!< The initial pitch
+	
+	Accel3d()
+	{
+		m_fRoll = 0;
+		m_fPitch = 0;
+		m_fInitRoll = 0;
+		m_fInitPitch = 0;
+	}
 };
-
-/** \brief A 3d Accelerometer struct. This is a wrapper around a regular
- * accelerometer to allow for usage in 3 dimensions.
- */
-struct Accelerometer3d
-{
-	Accelerometer m_xAcc; //!< x-axis Accelerometer
-	Accelerometer m_yAcc; //!< y-axis Accelerometer
-	Accelerometer m_zAcc; //!< z-axis Accelerometer
-};
-
 // ========================================
 // ========= Function Prototypes ==========
 // ========================================
@@ -105,7 +104,7 @@ int init();
  * \return 0 on successful exit
  * \note this function should be called many times
  * inside a loop that waits for this function
- * to return anything that is _NOT_ 0.
+ * to return anything that is NOT 0.
  */
 int eventLoop();
 
@@ -113,5 +112,9 @@ int eventLoop();
 // ============ Global Externals ==========
 // ========================================
 extern gnublin_gpio gpio;
-extern BMA180Accelerometer * g_Accel0; // Accel on the left leg
-extern BMA180Accelerometer * g_Accel1; // Accel on the right leg
+
+/** \brief Accelerometer on the left leg */
+extern BMA180Accelerometer * g_Accel0;
+
+/** \brief Accelerometer on the right leg */
+extern BMA180Accelerometer * g_Accel1;

@@ -55,7 +55,7 @@ int eventLoop()
 	g_Accel0->readFullSensorState();
 	float roll = g_Accel0->getPitch();
 	float pitch = g_Accel0->getRoll();
-	std::cout << "Roll: " << roll << "\tPitch: " << pitch << std::endl;	
+	//std::cout << "Roll: " << roll << "\tPitch: " << pitch << std::endl;	
 	usleep(50000);
 	return 0;
 }
