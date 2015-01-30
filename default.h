@@ -94,8 +94,8 @@ struct Accel3d
 	// default ctor - init all to 0
 	Accel3d()
 	{
-		m_fRoll = 0;
-		m_fPitch = 0;
+		m_roll = 0;
+		m_pitch = 0;
 		m_initRoll = 0;
 		m_initPitch = 0;
 		m_xAcc = 0;
@@ -138,6 +138,14 @@ void updateAccel3d(BMA180Accelerometer *accel,
  */
 void initAccel3d(BMA180Accelerometer *accel,
 				Accel3d *a3d);
+
+/** \brief Performs a check on the accelerometer to see
+ * if an error condition exists.
+ * \param aLeft Accelerometer on the left leg.
+ * \param aRight Accelerometer on the right leg.
+ * \return 0 if all is right, 1 if the user is messing up.
+ */
+bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight);
 
 // ========================================
 // ============ Global Externals ==========

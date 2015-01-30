@@ -97,7 +97,10 @@ void initAccel3d(BMA180Accelerometer *accel,
 	a3d->m_initZ = accel->getAccelerationZ();	
 }
 
-
-
+// Performs a test on the accelerometers
+bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight)
+{
+	return false; // all is right in the world
+}
 
 
