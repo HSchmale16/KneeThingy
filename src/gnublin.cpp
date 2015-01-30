@@ -3,7 +3,7 @@
 //build date: 01/24/15 14:46
 //******************************************** 
 
-#include "gnublin.h"
+#include "../include/gnublin.h"
 
 
 //Converting string to number

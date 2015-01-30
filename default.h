@@ -5,7 +5,7 @@
  */
 
 #define BOARD BEAGLEBONE_BLACK
-#include "gnublin.h"
+#include "include/gnublin.h"               // Accessing GPIO + Analog reads
 
 #include <iostream>                        // for basic I/O opps
 #include <string>                          // for std::string
@@ -17,6 +17,9 @@
 
 // ------------- Std Constant -------------
 // Misc. Constants
+/** \brief Wait Period in microseconds for updates
+ */
+const int UPDATE_WAIT_T = 50000;
 
 /** \brief database file path
  */
@@ -83,6 +86,7 @@ struct Accel3d
 	float m_fInitRoll;   //!< The initial roll
 	float m_fInitPitch;  //!< The initial pitch
 	
+	// default ctor - init all to 0
 	Accel3d()
 	{
 		m_fRoll = 0;
@@ -111,10 +115,21 @@ int eventLoop();
 // ========================================
 // ============ Global Externals ==========
 // ========================================
+
+/** \brief The GPIO object, required to access GPIO on the beagle bone
+ * black.
+ *
+ * It allows access to the the GPIO headers for digitial I/O on the
+ * GPIO pins.
+ */
 extern gnublin_gpio gpio;
 
-/** \brief Accelerometer on the left leg */
+/** \brief Accelerometer on the left leg
+ */
 extern BMA180Accelerometer * g_Accel0;
 
-/** \brief Accelerometer on the right leg */
+/** \brief Accelerometer on the right leg
+ */
 extern BMA180Accelerometer * g_Accel1;
+
+

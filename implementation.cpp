@@ -10,8 +10,8 @@
 
 // Externs declared in header are here
 gnublin_gpio gpio;
-BMA180Accelerometer * g_Accel0;
-BMA180Accelerometer * g_Accel1;
+BMA180Accelerometer * g_Accel0; //!< Left Leg Accel
+BMA180Accelerometer * g_Accel1; //!< Right Leg Accel
 
 // File scope global variables
 static sqlite3 *db;
@@ -33,9 +33,16 @@ int init()
 	gpio.pinMode(PIN_STOP_LED, OUTPUT);
 	
 	// Init I2C for all devices here
+	
+	// init first accelerometer
 	g_Accel0 = new BMA180Accelerometer(1, 0x38);
 	g_Accel0->setRange(PLUSMINUS_1_G);
 	g_Accel0->setBandwidth(BW_150HZ);	
+	
+	// init 2nd accelerometer
+	g_Accel1 = new BMA180Accelerometer(1, 0x38);
+	g_Accel1->setRange(PLUSMINUS_1_G);
+	g_Accel1->setBandwidth(BW_150HZ);
 
 	// init DB
 	int rc = sqlite3_open(DB_FILE_PATH.c_str(), &db);
@@ -46,17 +53,17 @@ int init()
 	return 0;
 }
 
-// This function contains the commands that should be
-// carried out every iteration of the event loop.
-// This function is equilvilent to the arduino `loop()`
-// function.
+/** This function contains the commands that should be
+ * carried out every iteration of the event loop.
+ * This function is equilvilent to the arduino `loop()`
+ * function.
+ */
 int eventLoop()
 {
 	g_Accel0->readFullSensorState();
 	float roll = g_Accel0->getPitch();
-	float pitch = g_Accel0->getRoll();
-	//std::cout << "Roll: " << roll << "\tPitch: " << pitch << std::endl;	
-	usleep(50000);
+	float pitch = g_Accel0->getRoll();	
+	usleep(UPDATE_WAIT_T); // sleep for a while
 	return 0;
 }
 

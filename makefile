@@ -5,8 +5,11 @@
 CXX=g++
 CFLAGS=-Wall -std=C++11
 LDFLAGS=-lsqlite3
-SRC=main.cpp gnublin.cpp implementation.cpp \
-	sqlCallbacks.cpp src/BMA180Accelerometer.cpp
+SRC=main.cpp \
+    implementation.cpp \
+    sqlCallbacks.cpp \
+    src/BMA180Accelerometer.cpp \
+    src/gnublin.cpp
 OBJ=$(SRC:.cpp=.o)
 EXE=KneeThing.out
 
@@ -21,3 +24,4 @@ $(EXE): $(OBJ)
 clean:
 	if [ -e $(EXE) ] ; then rm $(EXE); fi
 	rm -rf *.o
+	rm -rf src/*.o
