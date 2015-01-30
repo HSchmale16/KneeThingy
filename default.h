@@ -36,25 +36,25 @@ const std::string LOG_FILE_DIR = "./logs";
  * \note Locatation: P8_3
  * \note State: OUTPUT
  */
-const int PIN_BUZZER = 38;
+const int PIN_BUZZER = 69;
 
 /** \brief Calibrate button GPIO
  * \note Location: P8_4
  * \note State: INPUT
  */
-const int PIN_CALIB_BUTTON = 39;
+const int PIN_CALIB_BUTTON = 68;
 
 /** \brief Calibration LED GPIO
  * \note Location: P8_5
  * \note State: OUTPUT
  */
-const int PIN_CALIB_LED = 34;
+const int PIN_CALIB_LED = 45;
 
 /** \brief Calibration Complete LED GPIO
  * \note Location: P8_6
  * \note State: OUTPUT
  */
-const int PIN_CALIB_DONE_LED = 35;
+const int PIN_CALIB_DONE_LED = 44;
 
 /** \brief The warning LED GPIO
  * \note Location: P8_7
@@ -88,7 +88,9 @@ struct Accel3d
 	int m_xAcc;       //!< The acceleration on the x-axis
 	int m_yAcc;       //!< The acceleration on the y-axis
 	int m_zAcc;       //!< The acceleration on the z-axis
-	
+	int m_initX;      //!< Initial Acceleration on the x-axis
+	int m_initY;
+	int m_initZ;	
 	// default ctor - init all to 0
 	Accel3d()
 	{
@@ -96,9 +98,12 @@ struct Accel3d
 		m_fPitch = 0;
 		m_fInitRoll = 0;
 		m_fInitPitch = 0;
-		m_nxAcc = 0;
-		m_nyAcc = 0;
-		m_nzAcc = 0;
+		m_xAcc = 0;
+		m_yAcc = 0;
+		m_zAcc = 0;
+		m_initX = 0;
+		m_initY = 0;
+		m_initZ = 0;
 	}
 };
 // ========================================
@@ -124,6 +129,14 @@ int eventLoop();
  * \return Nothing
  */
 void updateAccel3d(BMA180Accelerometer *accel,
+				Accel3d *a3d);
+
+/** \brief initializes an accel3d struct based off an accelerometer
+ * readings at that moment.
+ * \param accel The accelerometer to read for initialization.
+ * \baram a3d The struct to initialize. 
+ */
+void initAccel3d(BMA180Accelerometer *accel,
 				Accel3d *a3d);
 
 // ========================================
