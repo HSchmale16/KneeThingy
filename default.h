@@ -83,8 +83,11 @@ struct Accel3d
 {
 	float m_fRoll;      //!< The roll of that accelerometer
 	float m_fPitch;     //!< The pitch of that accelerometer
-	float m_fInitRoll;   //!< The initial roll
-	float m_fInitPitch;  //!< The initial pitch
+	float m_fInitRoll;  //!< The initial roll
+	float m_fInitPitch; //!< The initial pitch
+	int m_xAcc;       //!< The acceleration on the x-axis
+	int m_yAcc;       //!< The acceleration on the y-axis
+	int m_zAcc;       //!< The acceleration on the z-axis
 	
 	// default ctor - init all to 0
 	Accel3d()
@@ -93,6 +96,9 @@ struct Accel3d
 		m_fPitch = 0;
 		m_fInitRoll = 0;
 		m_fInitPitch = 0;
+		m_nxAcc = 0;
+		m_nyAcc = 0;
+		m_nzAcc = 0;
 	}
 };
 // ========================================
@@ -111,6 +117,14 @@ int init();
  * to return anything that is NOT 0.
  */
 int eventLoop();
+
+/** \brief updates an accel3d  struct
+ * \param accel an accelerometer instance to read from
+ * \param a3d the struct to update
+ * \return Nothing
+ */
+void updateAccel3d(BMA180Accelerometer *accel,
+				Accel3d *a3d);
 
 // ========================================
 // ============ Global Externals ==========
@@ -131,5 +145,18 @@ extern BMA180Accelerometer * g_Accel0;
 /** \brief Accelerometer on the right leg
  */
 extern BMA180Accelerometer * g_Accel1;
+
+/** \brief Accelerometer structs to hold the data recieved from each
+ * Accelerometer.
+ *
+ * This one goes to g_Accel0.
+ */
+extern Accel3d g_A3d0;
+
+/** \brief Accelerometer struct
+ *
+ * This one goes to g_Accel1;
+ */
+extern Accel3d g_A3d1;
 
 

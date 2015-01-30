@@ -12,6 +12,9 @@
 gnublin_gpio gpio;
 BMA180Accelerometer * g_Accel0; //!< Left Leg Accel
 BMA180Accelerometer * g_Accel1; //!< Right Leg Accel
+Accel3d g_A3d0;
+Accel3d g_A3d1;
+
 
 // File scope global variables
 static sqlite3 *db;
@@ -65,6 +68,18 @@ int eventLoop()
 	float pitch = g_Accel0->getRoll();	
 	usleep(UPDATE_WAIT_T); // sleep for a while
 	return 0;
+}
+
+// accel update function
+void updateAccel3d(BMA180Accelerometer *accel,
+		Accel3d *a3d)
+{
+	accel->readFullSensorState();
+	a3d->m_fRoll = accel->getRoll();
+	a3d->m_fPitch = accel->getPitch();
+	a3d->m_xAcc = accel->getAccelerationX();
+	a3d->m_yAcc = accel->getAccelerationY();
+	a3d->m_zAcc = accel->getAccelerationZ();
 }
 
 
