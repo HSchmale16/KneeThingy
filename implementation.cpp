@@ -27,6 +27,9 @@ static sqlite3 *db;
 int init()
 {
 	using namespace std;
+	// Turn off USR LEDS
+	gpio.digitialWrite(	
+
 	// set the pin modes of the GPIOs
 	gpio.pinMode(PIN_BUZZER, OUTPUT);
 	gpio.pinMode(PIN_CALIB_BUTTON, INPUT);
@@ -75,11 +78,26 @@ void updateAccel3d(BMA180Accelerometer *accel,
 		Accel3d *a3d)
 {
 	accel->readFullSensorState();
-	a3d->m_fRoll = accel->getRoll();
-	a3d->m_fPitch = accel->getPitch();
+	a3d->m_roll = accel->getRoll();
+	a3d->m_pitch = accel->getPitch();
 	a3d->m_xAcc = accel->getAccelerationX();
 	a3d->m_yAcc = accel->getAccelerationY();
 	a3d->m_zAcc = accel->getAccelerationZ();
 }
+
+// inits an accel3d instance
+void initAccel3d(BMA180Accelerometer *accel,
+		Accel3d *a3d)
+{
+	accel->readFullSensorState();
+	a3d->m_initRoll = accel->getRoll();
+	a3d->m_initPitch = accel->getPitch();
+	a3d->m_initX = accel->getAccelerationX();
+	a3d->m_initY = accel->getAccelerationY();
+	a3d->m_initZ = accel->getAccelerationZ();	
+}
+
+
+
 
 

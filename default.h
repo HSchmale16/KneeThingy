@@ -96,8 +96,8 @@ struct Accel3d
 	{
 		m_fRoll = 0;
 		m_fPitch = 0;
-		m_fInitRoll = 0;
-		m_fInitPitch = 0;
+		m_initRoll = 0;
+		m_initPitch = 0;
 		m_xAcc = 0;
 		m_yAcc = 0;
 		m_zAcc = 0;
