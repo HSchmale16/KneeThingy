@@ -81,10 +81,10 @@ const int PIN_STOP_LED = 67;
  */
 struct Accel3d
 {
-	float m_fRoll;      //!< The roll of that accelerometer
-	float m_fPitch;     //!< The pitch of that accelerometer
-	float m_fInitRoll;  //!< The initial roll
-	float m_fInitPitch; //!< The initial pitch
+	float m_roll;      //!< The roll of that accelerometer
+	float m_pitch;     //!< The pitch of that accelerometer
+	float m_initRoll;  //!< The initial roll
+	float m_initPitch; //!< The initial pitch
 	int m_xAcc;       //!< The acceleration on the x-axis
 	int m_yAcc;       //!< The acceleration on the y-axis
 	int m_zAcc;       //!< The acceleration on the z-axis

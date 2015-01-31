@@ -26,9 +26,7 @@ static sqlite3 *db;
 // inits the program
 int init()
 {
-	using namespace std;
-	// Turn off USR LEDS
-	gpio.digitialWrite(	
+	using namespace std;	
 
 	// set the pin modes of the GPIOs
 	gpio.pinMode(PIN_BUZZER, OUTPUT);
@@ -66,9 +64,9 @@ int init()
  */
 int eventLoop()
 {
-	g_Accel0->readFullSensorState();
-	float roll = g_Accel0->getPitch();
-	float pitch = g_Accel0->getRoll();	
+	// Update Accel3d structs
+	updateAccel3d(g_Accel0, &g_A3d0);
+	updateAccel3d(g_Accel1, &g_A3d1);	
 	usleep(UPDATE_WAIT_T); // sleep for a while
 	return 0;
 }
