@@ -39,12 +39,12 @@ int init()
 	// Init I2C for all devices here
 	
 	// init first accelerometer
-	g_Accel0 = new BMA180Accelerometer(1, 0x38);
+	g_Accel0 = new BMA180Accelerometer(ACC0_I2C_BUS, ACC0_I2C_ADDY);
 	g_Accel0->setRange(PLUSMINUS_1_G);
 	g_Accel0->setBandwidth(BW_150HZ);	
 	
 	// init 2nd accelerometer
-	g_Accel1 = new BMA180Accelerometer(1, 0x38);
+	g_Accel1 = new BMA180Accelerometer(ACC1_I2C_BUS, ACC1_I2C_ADDY);
 	g_Accel1->setRange(PLUSMINUS_1_G);
 	g_Accel1->setBandwidth(BW_150HZ);
 

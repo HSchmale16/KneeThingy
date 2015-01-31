@@ -68,8 +68,15 @@ const int PIN_WARN_LED = 66;
  */
 const int PIN_STOP_LED = 67;
 
-// ----------- i2c bus constant -----------
 
+// ----------- i2c bus constant -----------
+const int ACC0_I2C_BUS = 1;     //!< i2c bus that Accel0 runs on
+
+const int ACC1_I2C_BUS = 1;     //!< i2c bus that Accel1 runs on
+
+const int ACC0_I2C_ADDY = 0x38; //!< Address on i2c bus of Accel0
+
+const int ACC1_I2C_ADDY = 0x38; //!< Address on i2c bus of Accel1
 
 
 // ========================================
