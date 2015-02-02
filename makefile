@@ -3,23 +3,30 @@
 # @date January 25, 2015
 
 CXX=g++
-CFLAGS=-Wall -std=C++11
-LDFLAGS=-lsqlite3
+
+CXX_FLAGS= \
+	-Wall \
+	-std=c++11
+
+LD_FLAGS=-lsqlite3
+
 SRC=main.cpp \
     implementation.cpp \
     sqlCallbacks.cpp \
     src/BMA180Accelerometer.cpp \
     src/gnublin.cpp
+
 OBJ=$(SRC:.cpp=.o)
+
 EXE=KneeThing.out
 
 all: $(SRC) $(EXE)
 
 $(EXE): $(OBJ)
-	$(CXX) $(LDFLAGS) $(OBJ) -o $@
+	$(CXX) $(LD_FLAGS) $(OBJ) -o $@
 
-.o:
-	$(CXX) $(CFLAGS) $< -o $@
+cpp.o:
+	$(CXX) $(CXX_FLAGS) -o $@ $<
 
 clean:
 	if [ -e $(EXE) ] ; then rm $(EXE); fi
