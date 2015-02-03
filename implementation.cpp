@@ -5,7 +5,7 @@
  */
 
 #include "default.h"
-#include <sqlite3.h>
+//#include <sqlite3.h>
 #include <unistd.h>
 
 // Externs declared in header are here
@@ -17,7 +17,7 @@ Accel3d g_A3d1;
 
 
 // File scope global variables
-static sqlite3 *db;
+//static sqlite3 *db;
 
 // FWD Declarations of functions used in this file and declared later.
 
@@ -49,7 +49,7 @@ int init()
 	g_Accel1->setBandwidth(BW_150HZ);
 
 	// init DB
-	int rc = sqlite3_open(DB_FILE_PATH.c_str(), &db);
+	int rc = 0; // sqlite3_open(DB_FILE_PATH.c_str(), &db);
 	if(rc){
 		exit(0);
 	}

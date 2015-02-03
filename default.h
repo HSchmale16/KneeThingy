@@ -92,10 +92,10 @@ struct Accel3d
 	float m_pitch;     //!< The pitch of that accelerometer
 	float m_initRoll;  //!< The initial roll
 	float m_initPitch; //!< The initial pitch
-	int m_xAcc;       //!< The acceleration on the x-axis
-	int m_yAcc;       //!< The acceleration on the y-axis
-	int m_zAcc;       //!< The acceleration on the z-axis
-	int m_initX;      //!< Initial Acceleration on the x-axis
+	int m_xAcc;        //!< The acceleration on the x-axis
+	int m_yAcc;        //!< The acceleration on the y-axis
+	int m_zAcc;        //!< The acceleration on the z-axis
+	int m_initX;       //!< Initial Acceleration on the x-axis
 	int m_initY;
 	int m_initZ;	
 	// default ctor - init all to 0
