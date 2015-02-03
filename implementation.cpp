@@ -10,11 +10,12 @@
 
 // Externs declared in header are here
 gnublin_gpio gpio;
+gnublin_adc adc;
 BMA180Accelerometer * g_Accel0; //!< Left Leg Accel
 BMA180Accelerometer * g_Accel1; //!< Right Leg Accel
 Accel3d g_A3d0;
 Accel3d g_A3d1;
-
+int HallEffectSensorVal;
 
 // File scope global variables
 //static sqlite3 *db;

@@ -68,6 +68,10 @@ const int PIN_WARN_LED = 66;
  */
 const int PIN_STOP_LED = 67;
 
+/** \brief the analog input pin that listens to the hall effect
+ * sensor
+ */
+const int HALL_EFFECT_SENSOR_PIN = 0;
 
 // ----------- i2c bus constant -----------
 const int ACC0_I2C_BUS = 1;     //!< i2c bus that Accel0 runs on
@@ -138,6 +142,11 @@ int eventLoop();
 void updateAccel3d(BMA180Accelerometer *accel,
 				Accel3d *a3d);
 
+/** \brief updates the Hall effect sensor value
+ */
+void updateHallEffectSensor();
+
+
 /** \brief initializes an accel3d struct based off an accelerometer
  * readings at that moment.
  * \param accel The accelerometer to read for initialization.
@@ -154,6 +163,7 @@ void initAccel3d(BMA180Accelerometer *accel,
  */
 bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight);
 
+
 // ========================================
 // ============ Global Externals ==========
 // ========================================
@@ -165,6 +175,12 @@ bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight);
  * GPIO pins.
  */
 extern gnublin_gpio gpio;
+
+/** \brief The analog input object
+ * 
+ * This object allows access to the analog inputs on the beagle bone
+ */
+extern gnublin_adc adc;
 
 /** \brief Accelerometer on the left leg
  */
@@ -186,5 +202,11 @@ extern Accel3d g_A3d0;
  * This one goes to g_Accel1;
  */
 extern Accel3d g_A3d1;
+
+/** \brief The current output of the hall effect sensor.
+ */
+extern int HallEffectSensorVal;
+
+
 
 
