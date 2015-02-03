@@ -50,10 +50,10 @@ int init()
 
 	// init DB
 	int rc = 0; // sqlite3_open(DB_FILE_PATH.c_str(), &db);
-	if(rc){
+	if(rc)
+	{
 		exit(0);
-	}
-		
+	}		
 	return 0;
 }
 
@@ -67,6 +67,7 @@ int eventLoop()
 	// Update Accel3d structs
 	updateAccel3d(g_Accel0, &g_A3d0);
 	updateAccel3d(g_Accel1, &g_A3d1);	
+	cout << g_A3d0.m_roll << "  " << g_A3d1.m_roll << endl;
 	usleep(UPDATE_WAIT_T); // sleep for a while
 	return 0;
 }
