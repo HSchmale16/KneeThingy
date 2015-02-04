@@ -134,6 +134,28 @@ int init();
  */
 int eventLoop();
 
+/** \brief Inits the hall effect sensor
+ *
+ * This function sets the initial value of the hall effect
+ * sensor for use in acceptable/unacceptable tests.
+ */
+void initHallEffectSensor();
+
+
+/** \brief updates the Hall effect sensor value
+ */
+void updateHallEffectSensor();
+
+/** \brief test to make sure the hall effect sensor is within the
+ * acceptable range.
+ * \return false if the values are in the acceptable range
+ * False ===> It's all good.
+ * True  ===> BAD
+ * \todo Ask potter to explain the hall effect sensor, and how
+ * it scales with distance.
+ */
+bool testHallEffectSensor();
+
 /** \brief updates an accel3d  struct
  * \param accel an accelerometer instance to read from
  * \param a3d the struct to update
@@ -141,11 +163,6 @@ int eventLoop();
  */
 void updateAccel3d(BMA180Accelerometer *accel,
 				Accel3d *a3d);
-
-/** \brief updates the Hall effect sensor value
- */
-void updateHallEffectSensor();
-
 
 /** \brief initializes an accel3d struct based off an accelerometer
  * readings at that moment.
@@ -159,7 +176,9 @@ void initAccel3d(BMA180Accelerometer *accel,
  * if an error condition exists.
  * \param aLeft Accelerometer on the left leg.
  * \param aRight Accelerometer on the right leg.
- * \return 0 if all is right, 1 if the user is messing up.
+ * \return false if in acceptable range, otherwise true.
+ * False ===> Good
+ * True  ===> Bad
  */
 bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight);
 

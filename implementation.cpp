@@ -15,7 +15,8 @@ BMA180Accelerometer * g_Accel0; //!< Left Leg Accel
 BMA180Accelerometer * g_Accel1; //!< Right Leg Accel
 Accel3d g_A3d0;
 Accel3d g_A3d1;
-int HallEffectSensorVal;
+int HallEffectSensorVal;       //!< The current value of the hall sensor
+int initHallEffectSensorVal;   //!< The initial value of the hall sensor
 
 // File scope global variables
 //static sqlite3 *db;
@@ -36,6 +37,9 @@ int init()
 	gpio.pinMode(PIN_CALIB_DONE_LED, OUTPUT);
 	gpio.pinMode(PIN_WARN_LED, OUTPUT);
 	gpio.pinMode(PIN_STOP_LED, OUTPUT);
+	
+	// Init the hall effect sensor for distance measurement
+	initHallEffectSensor();
 	
 	// Init I2C for all devices here
 	
@@ -65,13 +69,46 @@ int init()
  */
 int eventLoop()
 {
-	// Update Accel3d structs
-	updateAccel3d(g_Accel0, &g_A3d0);
-	updateAccel3d(g_Accel1, &g_A3d1);	
+	// Update the data
+	updateAccel3d(g_Accel0, &g_A3d0); // update left leg
+	updateAccel3d(g_Accel1, &g_A3d1); // update right leg
+	/// \todo add a magnetic check
+	
+	// TEST the values to make sure there within the acceptable range
+	bool accelsOk = testAccel3ds(&g_A3d0, &g_A3d1);
+	bool distsOk = testHallEffectSensor();	
+
+	// Output the data	
 	cout << g_A3d0.m_roll << "  " << g_A3d1.m_roll << endl;
-	usleep(UPDATE_WAIT_T); // sleep for a while
+	usleep(UPDATE_WAIT_T); // sleep for a couple of microsecs
 	return 0;
 }
+
+// ====================================================================
+// Updaters and testers
+// --------------------------------------------------------------------
+// Hall Effect Sensor Functions
+
+// inits hall effect sensor
+void initHallEffectSensor()
+{
+	initHallEffectSensorVal = adc.getVoltage(HALL_EFFECT_SENSOR_PIN);
+}
+
+// updates hall effect sensor
+void updateHallEffectSensor()
+{
+	HallEffectSensorVal = adc.getVoltage(HALL_EFFECT_SENSOR_PIN);	
+}
+
+// check if the hall effect is still in the good range
+bool testHallEffectSensor()
+{
+	return false; // it's all good take no action
+}
+
+// --------------------------------------------------------------------
+// Accelerometer Functions
 
 // accel update function
 void updateAccel3d(BMA180Accelerometer *accel,
