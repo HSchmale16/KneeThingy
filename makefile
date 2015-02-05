@@ -8,7 +8,7 @@ CXX_FLAGS= \
 	-Wall \
 	-std=c++11
 
-LD_FLAGS=-lglog
+LD_FLAGS=-L/usr/local/lib -lglog -lsqlite3
 
 SRC=main.cpp \
     implementation.cpp \
@@ -29,7 +29,6 @@ $(EXE): $(OBJ)
 
 cpp.o:
 	$(CXX) $(CXX_FLAGS) -o $@ $<
-
 clean:
 	if [ -e $(EXE) ] ; then rm $(EXE); fi
 	rm -rf *.o
