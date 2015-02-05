@@ -10,7 +10,8 @@
  * All callbacks are prefixed with a `cb_`
  */
 
-// #include <sqlite3.h> // might as well as this is callbacks for sqlite3
+#include <sqlite3.h> // might as well as this is callbacks for sqlite3
+#include <glog/logging.h>
 
 /** \brief an empty callback
  */

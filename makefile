@@ -8,7 +8,7 @@ CXX_FLAGS= \
 	-Wall \
 	-std=c++11
 
-LD_FLAGS=
+LD_FLAGS=-lglog
 
 SRC=main.cpp \
     implementation.cpp \
@@ -19,6 +19,8 @@ SRC=main.cpp \
 OBJ=$(SRC:.cpp=.o)
 
 EXE=KneeThing.out
+
+DEPLOY_LOC=root@192.168.7.2:/root/KneeThingy
 
 all: $(SRC) $(EXE)
 
@@ -32,3 +34,8 @@ clean:
 	if [ -e $(EXE) ] ; then rm $(EXE); fi
 	rm -rf *.o
 	rm -rf src/*.o
+
+# Copies the program to a connected beagle bone
+deploy: clean
+	cd ..
+	scp -r . $(DEPLOY_LOC)

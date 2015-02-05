@@ -9,6 +9,7 @@
 
 #include <iostream>                        // for basic I/O opps
 #include <string>                          // for std::string
+//#include <glog/logging.h>
 #include "include/BMA180Accelerometer.h"
 
 // ========================================

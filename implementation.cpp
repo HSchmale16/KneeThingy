@@ -4,9 +4,10 @@
  * Contains the implementation of functions defined in default.h
  */
 
-#include "default.h"
-//#include <sqlite3.h>
 #include <unistd.h>
+#include <glog/logging.h>
+#include <sqlite3.h>
+#include "default.h"
 
 // Externs declared in header are here
 gnublin_gpio gpio;
