@@ -8,15 +8,15 @@
 // this file contains everything needed to work with gnublin and run this program
 // it has the function prototypes and the various constants defined in it
 //#include "default.h"
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include "default.h"
 
 int main(int argc, char ** argv)
 {
 	// initiate logging first
-	FLAGS_log_dir = "./logs/";
-	google::InitGoogleLogging(argv[0]);
-	LOG(INFO) << "Initialized google logging";	
+	//FLAGS_log_dir = "./logs/";
+	//google::InitGoogleLogging(argv[0]);
+	//LOG(INFO) << "Initialized google logging";	
 	
 	// now run the primary init
 	int rc = init(); // return code

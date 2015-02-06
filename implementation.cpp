@@ -5,7 +5,7 @@
  */
 
 #include <unistd.h>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include <sqlite3.h>
 #include "default.h"
 
@@ -72,15 +72,19 @@ int eventLoop()
 {
 	// Update the data
 	updateAccel3d(g_Accel0, &g_A3d0); // update left leg
-	updateAccel3d(g_Accel1, &g_A3d1); // update right leg
+	//updateAccel3d(g_Accel1, &g_A3d1); // update right leg
 	/// \todo add a magnetic check
 	
 	// TEST the values to make sure there within the acceptable range
 	bool accelsOk = testAccel3ds(&g_A3d0, &g_A3d1);
 	bool distsOk = testHallEffectSensor();	
 
+		
+
 	// Output the data	
-	cout << g_A3d0.m_roll << "  " << g_A3d1.m_roll << endl;
+	cout << g_A3d0.m_roll << "  " << g_A3d0.m_pitch << endl;
+	cout << g_A3d0.m_xAcc << "  " << g_A3d0.m_yAcc << "  " << g_A3d0.m_zAcc << endl;
+
 	usleep(UPDATE_WAIT_T); // sleep for a couple of microsecs
 	return 0;
 }

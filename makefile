@@ -8,7 +8,7 @@ CXX_FLAGS= \
 	-Wall \
 	-std=c++11
 
-LD_FLAGS=-L/usr/local/lib -lglog -lsqlite3
+LD_FLAGS= -lsqlite3
 
 SRC=main.cpp \
     implementation.cpp \
