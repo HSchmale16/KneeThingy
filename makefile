@@ -20,6 +20,7 @@ OBJ=$(SRC:.cpp=.o)
 
 EXE=KneeThing.out
 
+# Location to deploy to
 DEPLOY_LOC=root@192.168.7.2:/root/KneeThingy
 
 all: $(SRC) $(EXE)

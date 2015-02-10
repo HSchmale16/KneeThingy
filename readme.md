@@ -16,6 +16,8 @@ This project is meant to run on a beaglebone black.
 * The gnublin api: 
   https://github.com/embeddedprojects/gnublin-api
 
+# Sources
+* http://beaglebone.cameon.net/home/i2c-devices
 
 # Dependicies #
 * gnublin-api
