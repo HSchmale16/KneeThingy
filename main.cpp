@@ -7,8 +7,6 @@
 
 // this file contains everything needed to work with gnublin and run this program
 // it has the function prototypes and the various constants defined in it
-//#include "default.h"
-//#include <glog/logging.h>
 #include "default.h"
 
 int main(int argc, char ** argv)
