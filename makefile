@@ -27,7 +27,7 @@ DEPLOY_LOC=root@192.168.7.2:/root/KneeThingy
 all: $(SRC) $(EXE)
 
 $(EXE): $(OBJ)
-	$(CXX) $(LD_FLAGS) $(OBJ) -o $@
+	$(CXX) $(LD_FLAGS) -o $@ $(OBJ)
 
 .cpp.o:
 	$(CXX) -c $(CXX_FLAGS) -o $@ $<
@@ -37,6 +37,7 @@ clean:
 	if [ -e $(EXE) ] ; then rm $(EXE); fi
 	rm -rf *.o
 	rm -rf src/*.o
+	rm -rf BlackLib/*.o
 
 # Copies the program to a connected beagle bone
 deploy: clean
