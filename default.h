@@ -4,9 +4,6 @@
  * Contains everything needed for this program
  */
 
-#define BOARD BEAGLEBONE_BLACK
-#include "include/gnublin.h"               // Accessing GPIO + Analog reads
-
 #include <iostream>                        // for basic I/O opps
 #include <string>                          // for std::string
 //#include <glog/logging.h>
@@ -188,19 +185,6 @@ bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight);
 // ============ Global Externals ==========
 // ========================================
 
-/** \brief The GPIO object, required to access GPIO on the beagle bone
- * black.
- *
- * It allows access to the the GPIO headers for digitial I/O on the
- * GPIO pins.
- */
-extern gnublin_gpio gpio;
-
-/** \brief The analog input object
- * 
- * This object allows access to the analog inputs on the beagle bone
- */
-extern gnublin_adc adc;
 
 /** \brief Accelerometer on the left leg
  */

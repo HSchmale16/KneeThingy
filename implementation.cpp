@@ -4,14 +4,12 @@
  * Contains the implementation of functions defined in default.h
  */
 
+#include <cstdlib>
 #include <unistd.h>
-//#include <glog/logging.h>
 #include <sqlite3.h>
 #include "default.h"
 
 // Externs declared in header are here
-gnublin_gpio gpio;
-gnublin_adc adc;
 BMA180Accelerometer * g_Accel0; //!< Left Leg Accel
 BMA180Accelerometer * g_Accel1; //!< Right Leg Accel
 Accel3d g_A3d0;
@@ -31,13 +29,6 @@ int init()
 {
 	using namespace std;	
 
-	// set the pin modes of the GPIOs
-	gpio.pinMode(PIN_BUZZER, OUTPUT);
-	gpio.pinMode(PIN_CALIB_BUTTON, INPUT);
-	gpio.pinMode(PIN_CALIB_LED, OUTPUT);
-	gpio.pinMode(PIN_CALIB_DONE_LED, OUTPUT);
-	gpio.pinMode(PIN_WARN_LED, OUTPUT);
-	gpio.pinMode(PIN_STOP_LED, OUTPUT);
 	
 	// Init the hall effect sensor for distance measurement
 	initHallEffectSensor();
@@ -82,8 +73,8 @@ int eventLoop()
 		
 
 	// Output the data	
-	cout << g_A3d0.m_roll << "  " << g_A3d0.m_pitch << endl;
-	cout << g_A3d0.m_xAcc << "  " << g_A3d0.m_yAcc << "  " << g_A3d0.m_zAcc << endl;
+	std::cout << g_A3d0.m_roll << "  " << g_A3d0.m_pitch << std::endl;
+	std::cout << g_A3d0.m_xAcc << "  " << g_A3d0.m_yAcc << "  " << g_A3d0.m_zAcc << std::endl;
 
 	usleep(UPDATE_WAIT_T); // sleep for a couple of microsecs
 	return 0;
@@ -97,15 +88,13 @@ int eventLoop()
 // inits hall effect sensor
 void initHallEffectSensor()
 {
-	initHallEffectSensorVal = adc.getVoltage(HALL_EFFECT_SENSOR_PIN);
-}
 
+}
 // updates hall effect sensor
 void updateHallEffectSensor()
 {
-	HallEffectSensorVal = adc.getVoltage(HALL_EFFECT_SENSOR_PIN);	
-}
 
+}
 // check if the hall effect is still in the good range
 bool testHallEffectSensor()
 {
