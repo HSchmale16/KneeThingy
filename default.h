@@ -8,6 +8,7 @@
 #include <string>                          // for std::string
 //#include <glog/logging.h>
 #include "include/BMA180Accelerometer.h"
+#include "BlackLib/BlackLib.h"
 
 // ========================================
 // =========== Global Constants ===========

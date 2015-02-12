@@ -33,11 +33,11 @@
 
 #include "BlackCore.h"
 #include "BlackADC.h"
-#include "BlackPWM.h"
+// #include "BlackPWM.h"
 #include "BlackGPIO.h"
-#include "BlackUART.h"
-#include "BlackSPI.h"
-#include "BlackI2C.h"
+// #include "BlackUART.h"
+// #include "BlackSPI.h"
+// #include "BlackI2C.h"
 
 
 #endif /* BLACKLIB_H_ */
