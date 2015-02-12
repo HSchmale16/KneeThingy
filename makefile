@@ -12,13 +12,10 @@ SRC=main.cpp \
     implementation.cpp \
     sqlCallbacks.cpp \
     src/BMA180Accelerometer.cpp \
+    src/gnublin.cpp \
     BlackLib/BlackADC.cpp \
     BlackLib/BlackCore.cpp \
     BlackLib/BlackGPIO.cpp \
-    BlackLib/BlackI2C.cpp \
-    BlackLib/BlackPWM.cpp \
-    BlackLib/BlackSPI.cpp \
-    BlackLib/BlackUART.cpp
 
 OBJ=$(SRC:.cpp=.o)
 
