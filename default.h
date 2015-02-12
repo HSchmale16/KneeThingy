@@ -9,6 +9,7 @@
 //#include <glog/logging.h>
 #include "include/BMA180Accelerometer.h"
 #include "BlackLib/BlackLib.h"
+// #include "BlackLib/BlackDef.h"
 
 // ========================================
 // =========== Global Constants ===========
@@ -35,42 +36,42 @@ const std::string LOG_FILE_DIR = "./logs";
  * \note Locatation: P8_3
  * \note State: OUTPUT
  */
-const int PIN_BUZZER = 69;
+const BlackLib::gpioName PIN_BUZZER = BlackLib::GPIO_69;
 
 /** \brief Calibrate button GPIO
  * \note Location: P8_4
  * \note State: INPUT
  */
-const int PIN_CALIB_BUTTON = 68;
+const BlackLib::gpioName PIN_CALIB_BUTTON = BlackLib::GPIO_68;
 
 /** \brief Calibration LED GPIO
  * \note Location: P8_5
  * \note State: OUTPUT
  */
-const int PIN_CALIB_LED = 45;
+const BlackLib::gpioName PIN_CALIB_LED = BlackLib::GPIO_34;
 
 /** \brief Calibration Complete LED GPIO
  * \note Location: P8_6
  * \note State: OUTPUT
  */
-const int PIN_CALIB_DONE_LED = 44;
+const BlackLib::gpioName PIN_CALIB_DONE_LED = BlackLib::GPIO_44;
 
 /** \brief The warning LED GPIO
  * \note Location: P8_7
  * \note State: OUTPUT
  */
-const int PIN_WARN_LED = 66;
+const BlackLib::gpioName PIN_WARN_LED = BlackLib::GPIO_66;
 
 /** \brief The stop light
  * \note Location: P8_8
  * \note State: OUTPUT
  */
-const int PIN_STOP_LED = 67;
+const BlackLib::gpioName PIN_STOP_LED = BlackLib::GPIO_67;
 
 /** \brief the analog input pin that listens to the hall effect
  * sensor
  */
-const int HALL_EFFECT_SENSOR_PIN = 0;
+const BlackLib::adcName HALL_EFFECT_SENSOR_PIN = BlackLib::AIN0;
 
 // ----------- i2c bus constant -----------
 const int ACC0_I2C_BUS = 1;     //!< i2c bus that Accel0 runs on
