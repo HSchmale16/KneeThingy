@@ -35,7 +35,9 @@ int init()
 	
     // init the pins for use
     gpio.pinMode(PIN_ON_OFF_SW, "INPUT");
-    
+    gpio.pinMode(PIN_RUNNING_LED, "OUTPUT");
+    gpio.pinMode(PIN_WARN_LED, "OUTPUT");
+
     // Init the hall effect sensor for distance measurement
 	initHallEffectSensor();
 	
@@ -69,8 +71,10 @@ int eventLoop()
 {
 	if(gpio.digitalRead(PIN_ON_OFF_SW)){
             isRunning = true;
+            gpio.digitalWrite(PIN_RUNNING_LED, HIGH);
     }else{
             isRunning = false;
+            gpio.digitalWrite(PIN_RUNNING_LED, HIGH);
     }
 
     // Update the data
@@ -89,6 +93,10 @@ int eventLoop()
 	    std::cout << g_A3d0.m_xAcc << "  " 
                   << g_A3d0.m_yAcc << "  " 
                   << g_A3d0.m_zAcc << std::endl;
+        if((!accelsOk) | (!distsOk)){
+            // This is not good, tell the user about it
+            gpio.digitalWrite(PIN_WARN_LED, HIGH);
+        }
     }
 
 	usleep(UPDATE_WAIT_T); // sleep for a couple of microsecs

@@ -31,41 +31,23 @@ const std::string LOG_FILE_DIR = "./logs";
 // ------------- Pin Constant -------------
 // What pin is each thingy on.
 
-/** \brief Buzzer GPIO
- * \note Locatation: P8_9
- * \note State: OUTPUT
- */
-const int PIN_BUZZER = 69;
-
-/** \brief Calibrate button GPIO
+/** \brief Turn logging on/off switch GPIO
  * \note Location: P8_10
  * \note State: INPUT
  */
 const int PIN_ON_OFF_SW = 68;
 
-/** \brief Calibration LED GPIO
+/** \brief Running LED GPIO
  * \note Location: P8_5
  * \note State: OUTPUT
  */
-const int PIN_CALIB_LED = 34;
-
-/** \brief Calibration Complete LED GPIO
- * \note Location: P8_12
- * \note State: OUTPUT
- */
-const int PIN_CALIB_DONE_LED = 44;
+const int PIN_RUNNING_LED = 34;
 
 /** \brief The warning LED GPIO
  * \note Location: P8_7
  * \note State: OUTPUT
  */
 const int PIN_WARN_LED = 66;
-
-/** \brief The stop light
- * \note Location: P8_8
- * \note State: OUTPUT
- */
-const int PIN_STOP_LED = 67;
 
 // ----------- i2c bus constant -----------
 const int ACC0_I2C_BUS = 1;     //!< i2c bus that Accel0 runs on
