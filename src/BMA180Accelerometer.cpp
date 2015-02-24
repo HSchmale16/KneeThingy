@@ -87,7 +87,7 @@ int BMA180Accelerometer::readFullSensorState(){
     // transferred with automatic address increment.
     char buf[1] = { 0x00 };
     if(write(file, buf, 1) !=1){
-    	cout << "Failed to Reset Address in readFullSensorState() " << endl;
+    	// cout << "Failed to Reset Address in readFullSensorState() " << endl;
     }
 
     int numberBytes = BMA180_I2C_BUFFER;
