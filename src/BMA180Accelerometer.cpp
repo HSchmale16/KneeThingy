@@ -93,12 +93,12 @@ int BMA180Accelerometer::readFullSensorState(){
     int numberBytes = BMA180_I2C_BUFFER;
     int bytesRead = read(file, this->dataBuffer, numberBytes);
     if (bytesRead == -1){
-    	cout << "Failure to read Byte Stream in readFullSensorState()" << endl;
+    	//cout << "Failure to read Byte Stream in readFullSensorState()" << endl;
     }
     close(file);
 
     if (this->dataBuffer[0]!=0x03){
-    	cout << "MAJOR FAILURE: DATA WITH BMA180 HAS LOST SYNC!" << endl;
+    	//cout << "MAJOR FAILURE: DATA WITH BMA180 HAS LOST SYNC!" << endl;
     }
 
    // cout << "Number of bytes read was " << bytesRead << endl;

@@ -4,7 +4,7 @@
 
 CXX=g++
 
-CXX_FLAGS=
+CXX_FLAGS=-O2
 
 LD_FLAGS= -lsqlite3
 
@@ -42,4 +42,4 @@ clean:
 # Copies the program to a connected beagle bone
 deploy: clean
 	cd ..
-	scp -r . $(DEPLOY_LOC)
+	rsync -r * $(DEPLOY_LOC)

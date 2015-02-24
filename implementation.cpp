@@ -67,7 +67,11 @@ int init()
  */
 int eventLoop()
 {
-	isRunning = gpio.digitalRead(PIN_ON_OFF_SW);
+	if(gpio.digitalRead(PIN_ON_OFF_SW)){
+            isRunning = true;
+    }else{
+            isRunning = false;
+    }
 
     // Update the data
 	updateAccel3d(g_Accel0, &g_A3d0); // update left leg
@@ -79,7 +83,7 @@ int eventLoop()
 	bool distsOk = testHallEffectSensor();			
 
 	// Output the data	
-	if(isRunning){
+	if(isRunning == true){
         std::cout << g_A3d0.m_roll << "  " 
                   << g_A3d0.m_pitch << std::endl;
 	    std::cout << g_A3d0.m_xAcc << "  " 

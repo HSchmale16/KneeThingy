@@ -38,7 +38,7 @@ const std::string LOG_FILE_DIR = "./logs";
 const int PIN_BUZZER = 69;
 
 /** \brief Calibrate button GPIO
- * \note Location: P8_4
+ * \note Location: P8_10
  * \note State: INPUT
  */
 const int PIN_ON_OFF_SW = 68;
