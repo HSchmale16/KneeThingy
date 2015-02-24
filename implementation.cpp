@@ -12,10 +12,12 @@
 // Externs declared in header are here
 BMA180Accelerometer * g_Accel0; //!< Left Leg Accel
 BMA180Accelerometer * g_Accel1; //!< Right Leg Accel
+gnublin_gpio gpio;
 Accel3d g_A3d0;
 Accel3d g_A3d1;
 int HallEffectSensorVal;       //!< The current value of the hall sensor
 int initHallEffectSensorVal;   //!< The initial value of the hall sensor
+bool isRunning;                //!< Is the board currently listening for data
 
 // File scope global variables
 //static sqlite3 *db;
@@ -29,8 +31,12 @@ int init()
 {
 	using namespace std;	
 
+	isRunning = false;
 	
-	// Init the hall effect sensor for distance measurement
+    // init the pins for use
+    gpio.pinMode(PIN_ON_OFF_SW, "INPUT");
+    
+    // Init the hall effect sensor for distance measurement
 	initHallEffectSensor();
 	
 	// Init I2C for all devices here
@@ -61,20 +67,25 @@ int init()
  */
 int eventLoop()
 {
-	// Update the data
+	isRunning = gpio.digitalRead(PIN_ON_OFF_SW);
+
+    // Update the data
 	updateAccel3d(g_Accel0, &g_A3d0); // update left leg
 	//updateAccel3d(g_Accel1, &g_A3d1); // update right leg
 	/// \todo add a magnetic check
 	
 	// TEST the values to make sure there within the acceptable range
 	bool accelsOk = testAccel3ds(&g_A3d0, &g_A3d1);
-	bool distsOk = testHallEffectSensor();	
-
-		
+	bool distsOk = testHallEffectSensor();			
 
 	// Output the data	
-	std::cout << g_A3d0.m_roll << "  " << g_A3d0.m_pitch << std::endl;
-	std::cout << g_A3d0.m_xAcc << "  " << g_A3d0.m_yAcc << "  " << g_A3d0.m_zAcc << std::endl;
+	if(isRunning){
+        std::cout << g_A3d0.m_roll << "  " 
+                  << g_A3d0.m_pitch << std::endl;
+	    std::cout << g_A3d0.m_xAcc << "  " 
+                  << g_A3d0.m_yAcc << "  " 
+                  << g_A3d0.m_zAcc << std::endl;
+    }
 
 	usleep(UPDATE_WAIT_T); // sleep for a couple of microsecs
 	return 0;
@@ -133,5 +144,3 @@ bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight)
 {
 	return false; // all is right in the world
 }
-
-
