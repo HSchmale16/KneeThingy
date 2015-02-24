@@ -32,7 +32,7 @@ const std::string LOG_FILE_DIR = "./logs";
 // What pin is each thingy on.
 
 /** \brief Buzzer GPIO
- * \note Locatation: P8_3
+ * \note Locatation: P8_9
  * \note State: OUTPUT
  */
 const int PIN_BUZZER = 69;
@@ -50,7 +50,7 @@ const int PIN_ON_OFF_SW = 68;
 const int PIN_CALIB_LED = 34;
 
 /** \brief Calibration Complete LED GPIO
- * \note Location: P8_6
+ * \note Location: P8_12
  * \note State: OUTPUT
  */
 const int PIN_CALIB_DONE_LED = 44;
