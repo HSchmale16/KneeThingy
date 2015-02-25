@@ -5,12 +5,25 @@
  * \section Potter's Group should write a description of program here.
  */
 
-// this file contains everything needed to work with gnublin and run this program
-// it has the function prototypes and the various constants defined in it
+// this file contains everything needed to work with gnublin
+// and run this program it has the function prototypes and 
+// the various constants defined in it
 #include "default.h"
+#include <csignal> // For Handling Interupts
+
+void sigcb_SIGINT(int signum){
+    std::cout << "Recived Signal: " << signum << std::endl;
+    std::cout << "Begining Shutdown - unexport pins" << std::endl;
+    gpio.unexport(PIN_ON_OFF_SW);
+    gpio.unexport(PIN_RUNNING_LED);
+    gpio.unexport(PIN_WARN_LED);
+    std::cout << "Finished shutdown" << std::endl;
+    exit(signum);
+}
 
 int main(int argc, char ** argv)
 {
+    signal(SIGINT, sigcb_SIGINT);
 	// initiate logging first
 	//FLAGS_log_dir = "./logs/";
 	//google::InitGoogleLogging(argv[0]);

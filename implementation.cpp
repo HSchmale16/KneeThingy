@@ -37,7 +37,9 @@ int init()
     gpio.pinMode(PIN_ON_OFF_SW, "INPUT");
     gpio.pinMode(PIN_RUNNING_LED, "OUTPUT");
     gpio.pinMode(PIN_WARN_LED, "OUTPUT");
-
+    
+    gpio.digitalWrite(PIN_RUNNING_LED, HIGH);
+    gpio.digitalWrite(PIN_WARN_LED, LOW);
     // Init the hall effect sensor for distance measurement
 	initHallEffectSensor();
 	
@@ -93,9 +95,11 @@ int eventLoop()
 	    std::cout << g_A3d0.m_xAcc << "  " 
                   << g_A3d0.m_yAcc << "  " 
                   << g_A3d0.m_zAcc << std::endl;
-        if((!accelsOk) | (!distsOk)){
+        if((accelsOk) | (distsOk)){
             // This is not good, tell the user about it
             gpio.digitalWrite(PIN_WARN_LED, HIGH);
+        }else{
+            gpio.digitalWrite(PIN_WARN_LED, LOW);
         }
     }
 
@@ -154,5 +158,8 @@ void initAccel3d(BMA180Accelerometer *accel,
 // Performs a test on the accelerometers
 bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight)
 {
+    if((aLeft->m_yAcc > aLeft->m_xAcc) && (aLeft->m_xAcc > 0)){
+        return false;
+    }
 	return false; // all is right in the world
 }
