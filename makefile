@@ -12,10 +12,7 @@ SRC=main.cpp \
     implementation.cpp \
     sqlCallbacks.cpp \
     src/BMA180Accelerometer.cpp \
-    src/gnublin.cpp \
-    BlackLib/BlackADC.cpp \
-    BlackLib/BlackCore.cpp \
-    BlackLib/BlackGPIO.cpp \
+    src/gnublin.cpp 
 
 OBJ=$(SRC:.cpp=.o)
 
@@ -37,9 +34,10 @@ clean:
 	if [ -e $(EXE) ] ; then rm $(EXE); fi
 	rm -rf *.o
 	rm -rf src/*.o
-	rm -rf BlackLib/*.o
+	#rm -rf BlackLib/*.o
 
 # Copies the program to a connected beagle bone
 deploy: clean
 	cd ..
 	rsync -r * $(DEPLOY_LOC)
+	#ssh root@192.168.7.2 "cd $(DEPLOY_LOC) ; make all"

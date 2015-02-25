@@ -7,6 +7,8 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <sqlite3.h>
+#include <ctime>
+#include <cstdio>
 #include "default.h"
 
 // Externs declared in header are here
@@ -18,7 +20,7 @@ Accel3d g_A3d1;
 int HallEffectSensorVal;       //!< The current value of the hall sensor
 int initHallEffectSensorVal;   //!< The initial value of the hall sensor
 bool isRunning;                //!< Is the board currently listening for data
-
+time_t rawtime;
 // File scope global variables
 //static sqlite3 *db;
 
@@ -31,7 +33,7 @@ int init()
 {
 	using namespace std;	
 
-	isRunning = false;
+	isRunning = true;
 	
     // init the pins for use
     gpio.pinMode(PIN_ON_OFF_SW, "INPUT");
@@ -71,13 +73,13 @@ int init()
  */
 int eventLoop()
 {
-	if(gpio.digitalRead(PIN_ON_OFF_SW)){
+	/*if(gpio.digitalRead(PIN_ON_OFF_SW)){
             isRunning = true;
             gpio.digitalWrite(PIN_RUNNING_LED, HIGH);
     }else{
             isRunning = false;
-            gpio.digitalWrite(PIN_RUNNING_LED, HIGH);
-    }
+            gpio.digitalWrite(PIN_RUNNING_LED, LOW);
+    }*/
 
     // Update the data
 	updateAccel3d(g_Accel0, &g_A3d0); // update left leg
@@ -90,10 +92,12 @@ int eventLoop()
 
 	// Output the data	
 	if(isRunning == true){
-        std::cout << g_A3d0.m_roll << "  " 
-                  << g_A3d0.m_pitch << std::endl;
-	    std::cout << g_A3d0.m_xAcc << "  " 
-                  << g_A3d0.m_yAcc << "  " 
+        time(&rawtime);
+        std::cout << "[" << rawtime << "]\t"
+                  << g_A3d0.m_roll  << "\t" 
+                  << g_A3d0.m_pitch << "\t"
+	              << g_A3d0.m_xAcc  << "\t" 
+                  << g_A3d0.m_yAcc  << "\t" 
                   << g_A3d0.m_zAcc << std::endl;
         if((accelsOk) | (distsOk)){
             // This is not good, tell the user about it
@@ -159,6 +163,9 @@ void initAccel3d(BMA180Accelerometer *accel,
 bool testAccel3ds(Accel3d *aLeft, Accel3d *aRight)
 {
     if((aLeft->m_yAcc > aLeft->m_xAcc) && (aLeft->m_xAcc > 0)){
+        return false;
+    }
+    if((aRight->m_yAcc > aRight->m_xAcc) && (aRight->m_xAcc > 0)){
         return false;
     }
 	return false; // all is right in the world

@@ -13,7 +13,10 @@
 
 void sigcb_SIGINT(int signum){
     std::cout << "Recived Signal: " << signum << std::endl;
-    std::cout << "Begining Shutdown - unexport pins" << std::endl;
+    std::cout << "Turn off LEDS" << std::endl;
+    gpio.digitalWrite(PIN_RUNNING_LED, LOW);
+    gpio.digitalWrite(PIN_WARN_LED, LOW);
+    std::cout << "Unexport pins" << std::endl;
     gpio.unexport(PIN_ON_OFF_SW);
     gpio.unexport(PIN_RUNNING_LED);
     gpio.unexport(PIN_WARN_LED);
