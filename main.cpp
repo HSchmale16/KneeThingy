@@ -1,4 +1,4 @@
-/** \author Henry J Schmale
+/**\author Henry J Schmale
  * \date January 25, 2015
  *
  * \mainpage Knee Thing
@@ -16,6 +16,7 @@ void sigcb_SIGINT(int signum){
     std::cout << "Turn off LEDS" << std::endl;
     gpio.digitalWrite(PIN_RUNNING_LED, LOW);
     gpio.digitalWrite(PIN_WARN_LED, LOW);
+    sleep(2);
     std::cout << "Unexport pins" << std::endl;
     gpio.unexport(PIN_ON_OFF_SW);
     gpio.unexport(PIN_RUNNING_LED);

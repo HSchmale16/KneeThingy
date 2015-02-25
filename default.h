@@ -38,16 +38,16 @@ const std::string LOG_FILE_DIR = "./logs";
 const int PIN_ON_OFF_SW = 26;
 
 /** \brief Running LED GPIO
- * \note Location: P8_11
+ * \note Location: P8_4
  * \note State: OUTPUT
  */
-const int PIN_RUNNING_LED = 45;
+const int PIN_RUNNING_LED = 39;
 
 /** \brief The warning LED GPIO
- * \note Location: P8_44
+ * \note Location: P8_3
  * \note State: OUTPUT
  */
-const int PIN_WARN_LED = 44;
+const int PIN_WARN_LED = 38;
 
 // ----------- i2c bus constant -----------
 const int ACC0_I2C_BUS = 1;     //!< i2c bus that Accel0 runs on
